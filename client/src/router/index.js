@@ -1,10 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Books from '../components/Books.vue';
 import Ping from '../components/Ping.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: '/',
+    name: 'Books',
+    component: Books,
+  },
   {
     path: '/ping',
     name: 'Ping',
