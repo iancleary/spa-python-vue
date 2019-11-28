@@ -171,6 +171,11 @@ export default {
       axios.get(path)
         .then((res) => {
           this.books = res.data.books;
+          // let books = array(this.books)
+          if (this.books.length === 0) {
+            this.message = 'No books! Please add one.';
+            this.showMessage = true;
+          }
         })
         .catch((error) => {
           // eslint-disable-next-line
@@ -286,9 +291,6 @@ export default {
           console.error(error);
           this.getBooks();
         });
-    },
-    onDeleteBook(book) {
-      this.removeBook(book.id);
     },
   },
   created() {
