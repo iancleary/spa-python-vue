@@ -36,7 +36,8 @@
                   <button
                         type="button"
                         class="btn btn-danger btn-sm"
-                        @click="onDeleteBook(book)">
+                        v-b-modal.book-delete-modal
+                        @click="deleteBook(book)">
                     Delete
                 </button>
                 </div>
@@ -118,6 +119,17 @@
         </b-button-group>
       </b-form>
     </b-modal>
+    <b-modal ref="deleteBookModal"
+            id="book-delete-modal"
+            title="Delete"
+            hide-footer>
+      <b-form @submit="onSubmitDelete" @reset="onResetDelete" class="w-100">
+        <b-button-group>
+          <b-button type="delete" variant="primary">Delete</b-button>
+          <b-button type="reset" variant="danger">Cancel</b-button>
+        </b-button-group>
+      </b-form>
+    </b-modal>
   </div>
 </template>
 
@@ -137,6 +149,12 @@ export default {
       message: '',
       showMessage: false,
       editForm: {
+        id: '',
+        title: '',
+        author: '',
+        read: [],
+      },
+      deleteForm: {
         id: '',
         title: '',
         author: '',
@@ -182,6 +200,10 @@ export default {
       this.editForm.title = '';
       this.editForm.author = '';
       this.editForm.read = [];
+      this.deleteForm.id = '';
+      this.deleteForm.title = '';
+      this.deleteForm.author = '';
+      this.deleteForm.read = [];
     },
     onSubmit(evt) {
       evt.preventDefault();
@@ -234,6 +256,20 @@ export default {
     onResetUpdate(evt) {
       evt.preventDefault();
       this.$refs.editBookModal.hide();
+      this.initForm();
+      this.getBooks(); // why?
+    },
+    deleteBook(book) {
+      this.deleteForm = book;
+    },
+    onSubmitDelete(evt) {
+      evt.preventDefault();
+      this.$refs.deleteBookModal.hide();
+      this.removeBook(this.deleteForm.id);
+    },
+    onResetDelete(evt) {
+      evt.preventDefault();
+      this.$refs.deleteBookModal.hide();
       this.initForm();
       this.getBooks(); // why?
     },
