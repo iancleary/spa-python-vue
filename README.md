@@ -16,13 +16,23 @@ Check out the [post](https://testdriven.io/developing-a-single-page-app-with-fla
 
 1. Fork/Clone
 
-1. Run the server-side Flask app in one terminal window:
-
+1. Run the server-side Flask or Fastapi app in one terminal window:
+    
+    ### Fastapi
     ```sh
+    $ cd fastapi
     $ pipenv --python 3.7
-    $ pipenv install
     $ pipenv shell
-    (spa-flask-vue)$ python app.py
+    $ pipenv install
+    (fastapi)$ ./start.sh
+    ```
+    ### Flask
+    ```sh
+    $ cd flask
+    $ pipenv --python 3.7
+    $ pipenv shell
+    $ pipenv install
+    (flask)$ ./start.sh
     ```
 
     Navigate to [http://localhost:5000](http://localhost:5000)
