@@ -190,6 +190,7 @@ export default {
     },
     addBook(payload) {
       const path = makePathFromRoute('/books');
+      // console.log(payload);
       axios.post(path, payload)
         .then(() => {
           this.getBooks();
