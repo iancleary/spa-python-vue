@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  frontend:
+    build: client/.
+    image: myvueclient:latest
+    ports:
+      - "8080:80"
+
+  fastapi:
+    build: fastapi/.
+    image: myfastapi:latest
+    ports:
+        - "8000:80"
