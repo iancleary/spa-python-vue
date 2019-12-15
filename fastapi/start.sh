@@ -1,2 +1,2 @@
 #!/bin/sh
-uvicorn app:app --reload
+uvicorn main:app --reload
